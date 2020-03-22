@@ -49,8 +49,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
-    BackgroundLocation.start();
+  void _incrementCounter() async {
+    if (await BackgroundLocation.isRunning()) {
+      BackgroundLocation.stop();
+    } else {
+      BackgroundLocation.start();
+    }
 
     setState(() {
       // This call to setState tells the Flutter framework that something has

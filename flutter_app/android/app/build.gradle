@@ -82,4 +82,7 @@ dependencies {
     // implementation "androidx.work:work-gcm:$work_version"
     // optional - Test helpers
     // androidTestImplementation "androidx.work:work-testing:$work_version"
+
+    // Google Location API
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 }

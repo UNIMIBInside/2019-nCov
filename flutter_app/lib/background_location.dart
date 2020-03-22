@@ -13,4 +13,8 @@ class BackgroundLocation {
   static start() {
     _channel.invokeMethod('start');
   }
+
+  static Future<bool> isRunning() async {
+    return await _channel.invokeMethod('status');
+  }
 }
