@@ -2,65 +2,66 @@ package events.pandemic.covid19
 
 import android.content.Context
 import android.location.Location
-import android.os.Looper
 import android.util.Log
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import java.util.*
 
 class BackgroundLocationWorker(appContext: Context, workerParams: WorkerParameters) :
         Worker(appContext, workerParams) {
-    private var locationCallback: LocationCallback? = null
-    private var records = ArrayList<Location>()
+    // private var registeredEventSink = HashMap<String, EventChannel.EventSink>()
 
     companion object {
-        // 5 minutes
-        private const val UPDATE_INTERVAL_IN_MILLISECONDS: Long = 5 * 60 * 1000
+        // private const val UPDATE_INTERVAL_IN_MILLISECONDS: Long = 5 * 60 * 1000
         private const val LOG_TAG = "BgWorker"
+        // private const val CHANNEL_NAME = "events.pandemic.covid19/background_location"
+    }
+
+    private fun invokeCallback(location: Location) {
+        // val locationAndTimestamp = LocationAndTimestamp(location)
+        val locationAndTimestamp = HashMap<String, Double>()
+        locationAndTimestamp["latitude"] = location.latitude
+        locationAndTimestamp["longitude"] = location.longitude
+        locationAndTimestamp["altitude"] = location.altitude
+        locationAndTimestamp["accuracy"] = location.accuracy.toDouble()
+        locationAndTimestamp["speed"] = location.speed.toDouble()
+        locationAndTimestamp["time"] = System.currentTimeMillis().toDouble()
+
+        // "?." means that call the member function only if the reference is not null.
+        BackgroundLocationHandler.instance.getRegisteredEventSink()?.success(locationAndTimestamp)
     }
 
     override fun doWork(): Result {
         Log.d(LOG_TAG, "Hello from Worker!")
-/*
-        if (locationCallback == null) {
-            Log.d(LOG_TAG, "initialize locationCallback")
-            var locationRequest = LocationRequest()
-            locationRequest.interval = UPDATE_INTERVAL_IN_MILLISECONDS * 3
-            locationRequest.fastestInterval = UPDATE_INTERVAL_IN_MILLISECONDS
-            locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-
-            locationCallback = object: LocationCallback() {
-                override fun onLocationResult(result: LocationResult?) {
-                    result ?: return
-                    for (location in result.locations) {
-                        // TODO: do something
-                        val timestamp = System.currentTimeMillis()
-                        val date_str = Date(timestamp).toString()
-                        Log.d(LOG_TAG, "${date_str} ${location.latitude} ${location.longitude}")
-                    }
-                }
-            }
-
-            Looper.myLooper() ?: Looper.prepare()
-            LocationServices.getFusedLocationProviderClient(applicationContext)
-                    .requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
-        }
- */
 
         LocationServices.getFusedLocationProviderClient(applicationContext)
                 .lastLocation.addOnSuccessListener { location: Location? ->
             if (location != null) {
-                records.add(location)
-                Log.d(LOG_TAG, "${records.size} ${location.latitude} ${location.longitude}")
+                Log.d(LOG_TAG, "${location.latitude} ${location.longitude}")
+
+                // records.add(location)
+                invokeCallback(location)
             }
         }
 
         return Result.success();
     }
+}
 
+class LocationAndTimestamp {
+    private var latitude: Double
+    private var longitude: Double
+    private var altitude: Double
+    private var accuracy: Float
+    private var speed: Float
+    private var time: Long
 
+    constructor(location: Location) {
+        this.latitude = location.latitude
+        this.longitude = location.longitude
+        this.altitude = location.altitude
+        this.accuracy = location.accuracy
+        this.speed = location.speed
+        this.time = System.currentTimeMillis()
+    }
 }

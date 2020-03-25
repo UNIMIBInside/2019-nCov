@@ -10,11 +10,31 @@ class BackgroundLocation {
     _channel.invokeMethod('stop');
   }
 
-  static start() {
+  static start(callback) {
+    var stream = LocationStream().stream;
+    stream.receiveBroadcastStream("1").listen(callback);
+
     _channel.invokeMethod('start');
   }
 
   static Future<bool> isRunning() async {
     return await _channel.invokeMethod('status');
   }
+}
+
+class LocationStream {
+  static LocationStream _instance;
+
+  EventChannel stream;
+
+  factory LocationStream() {
+    if (_instance == null) {
+      var stream = const EventChannel("events.pandemic.covid19/location_event");
+      _instance = LocationStream.private(stream);
+    }
+    return _instance;
+  }
+
+  LocationStream.private(this.stream);
+
 }

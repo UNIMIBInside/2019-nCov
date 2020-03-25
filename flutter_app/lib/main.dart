@@ -1,5 +1,6 @@
 import 'package:covid19/background_location.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,12 +49,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  EventChannel stream;
+
+  LocationAndTimestamp lastData;
+
+  _MyHomePageState() {
+
+  }
 
   void _incrementCounter() async {
     if (await BackgroundLocation.isRunning()) {
       BackgroundLocation.stop();
     } else {
-      BackgroundLocation.start();
+      BackgroundLocation.start((event) {
+        LocationAndTimestamp p = LocationAndTimestamp();
+        p.latitude = event["latitude"];
+        p.longitude = event["longitude"];
+        p.altitude = event["altitude"];
+        p.accuracy = event["accuracy"];
+        p.speed = event["speed"];
+        var t = event["time"] as double;
+        p.time = DateTime.fromMillisecondsSinceEpoch(t.toInt());
+        setState(() { lastData = p; });
+      });
     }
 
     setState(() {
@@ -107,6 +125,9 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            Text(
+              "${lastData?.time.toString()}: ${lastData?.latitude} ${lastData?.longitude}"
+            ),
           ],
         ),
       ),
@@ -117,4 +138,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+class LocationAndTimestamp {
+  double latitude;
+  double longitude;
+  double altitude;
+  double accuracy;
+  double speed;
+  DateTime time;
 }

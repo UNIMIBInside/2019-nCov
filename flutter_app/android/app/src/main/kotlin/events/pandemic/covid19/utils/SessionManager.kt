@@ -21,4 +21,13 @@ class SessionManager(context: Context) {
     fun getStringData(key: String): String? {
         return pref.getString(key, "")
     }
+
+    fun setLongData(key: String, value: Long) {
+        editor.putLong(key, value)
+        editor.commit()
+    }
+
+    fun getLongData(key: String): Long? {
+        return pref.getLong(key, 0)
+    }
 }
