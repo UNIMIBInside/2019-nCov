@@ -2,6 +2,43 @@ html {
   font-size: large;
 }
 
+hr.new {
+  border: 1px solid #7986CB;
+}
+
+.btn1{
+  background-color: #7986CB;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.scale
+{
+  height: 1em;
+  width: 1em;
+  filter: invert(48%) sepia(20%) saturate(3477%) hue-rotate(168deg) brightness(92%) contrast(100%);
+}
+
+
+nav {
+  background-color: #7986CB;
+}
+.tabs .tab a.active {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.tabs .tab a {
+  color: #000000;
+}
+
+.tabs .indicator {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background-color: #0f2ae8;
+  will-change: left, right;
+}
+
 .img-center {
   display: block;
   margin-left: auto;

@@ -1,0 +1,54 @@
+{
+  "values": {
+    "HTML_SELECT_LANGUAGE": "Selezionare Lingua",
+    "HTML_ALERT_MOBILE": "To get the best user experience, we recommend laptop or notebook.",
+    "HTML_ALERT_STAGING": "This is the page for developer to test. If you are not developer, please use <a href='https://pandemic.events'>production page</a> instead.",
+    "HTML_APP_NAME": "COVID-19 Timeline Download Tool",
+    "HTML_APP_DESCRIPTION": "Ci sono sempre più casi COVID-19 in Lombardia. Questo progetto ha lo scopo di individuare delle possibili aree maggiormente colpite dall'infezione grazie alle informazioni raccolte attraverso questo tool.",
+    "HTML_PROCESS_IN_LOCAL": "Per la tua privacy, i tuoi dati vengono elaborati SOLO da noi e NON verranno caricati su alcun server esterno all'università. Puoi richiederne la loro cancellazione in qualsiasi momento",
+
+    "HTML_LABEL_WHEN": "Quando:",
+    "HTML_LABEL_YOU": "La tua posizione:",
+    "HTML_LABEL_PATIENT": "Pazi:",
+    "HTML_VIEW_IN_GOOGLE_MAPS": "View in Google Maps",
+    "HTML_VIEW_IN_DATA_SOURCE": "View in Data Source",
+    "HTML_NEXT_STEP": "Next Step",
+
+    "HTML_STEP_1": "Step 1",
+    "HTML_STEP_1_0": "Assicurati che la funzione Posizione Cronologia sia stata abilitata",
+    "HTML_STEP_1_1": "Visita il sito <a href='https://google.com/maps/timeline' target='_blank'>Google Maps Timeline</a>. Se vedi dei punti rossi sulla mappa (come nell'immagine qui sotto), la funzione Posizione Cronologia è abilitata. Per favore, passa allo <a href=\"#\" onclick=\"selectTab('step2')\">step 2</a>.",
+    "IMG_LOCATION_HISTORY_ENABLED": "locales/ita/AbilitaCronologiaPosizioni.png",
+    "HTML_ENABLE_HISTORY_LOCATION": "Se non vedi alcun punto rosso sulla mappa, probabilmente devi abilitare la funzione. Fai clic sull'icona a forma di ingranaggio nella parte inferiore destra dello schermo. Quindi attivare 'Abilita cronologia delle posizioni'. Questo ti porterà in una pagina di consenso. Abilita questa funzione.",
+    "IMG_ENABLE_HISTORY_LOCATION": "locales/ita/CronologiaAbilitata.png",
+    "HTML_COME_BACK_AND_CHECK": "Since you just started collecting your location data, there is no data to match. Please come back another day to match again.",
+
+    "HTML_STEP_2": "Step 2",
+    "HTML_STEP_2_0": "Seleziona il periodo da scaricare: ",
+    "HTML_LAST_31_DAYS": "ultimi 31 giorni",
+    "HTML_LAST_14_DAYS": "ultimi 14 giorni",
+    "HTML_LAST_7_DAYS": "ultimi 7 giorni",
+    "HTML_DOWNLOAD": "Download",
+    "HTML_PUNC_PERIOD": ".",
+    "HTML_EXPECT_DOWNLOADS": "Dopo aver fatto clic sul pulsante Download, sarai in grado di vedere alcuni file scaricati. Per favore, prosegui allo <a href=\"#\" onclick=\"selectTab('step3')\">Step 3</a>.",
+    "HTML_ALLOW_POPUP": "In caso contrario, consenti i 'pop-ups' nel browser, quindi premi nuovamente il pulsante 'Download'.",
+
+    "HTML_STEP_3": "Step 3",
+    "HTML_STEP_3_0": "Inviaci i tuoi file via e-mail",
+    "IMG_ENABLE_GMAIL":"locales/ita/gLogo.png",
+    "HTML_STEP_3_1": "Nel caso in cui si riscontrino problemi con l'apertura automatica della propria mail premendo il logo di Gmail, inviarla manualmente a questo indirizzo: covid19insidesunimib@googlegroups.com",
+
+    "HTML_FACEBOOK": "Follow Us on Facebook",
+    "HTML_SOURCE_CODE": "Source code",
+    "HTML_CONTACT_US": "Scrivici",
+    "HTML_README": "Progetto",
+
+    "LOADING_TRACKING": "Loading tracking data ...\n",
+    "DONE_LOADING": "Done loading. You can start using now.\n",
+    "ANALYZING": "Analyzing %{filename} ...",
+    "DONE_ANALYZE": "Analyzed %{filename}. Found %{contacts_length} match(es) in %{num_points} records.",
+    "UNSUPPORTED_FILE_TYPE": "Unsupported file extension: %{filename}",
+    "FINISH_RESULTS": "Done comparison. Found %{total_found} overlapped place(s).\n\n",
+
+    "--- END OF STUPID JSON FILE ---": "FOR THE STUPID TAILING COMMA"
+  }
+}

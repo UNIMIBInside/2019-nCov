@@ -1,6 +1,6 @@
 // Load a specific language module.
 //
-// If 'fallback' is true, 
+// If 'fallback' is true,
 //
 function load_lang(locale, callback, fallback) {
   $.ajax(`locales/${locale}/text.json`)
@@ -34,9 +34,9 @@ function load_i18n(callback) {
   if (lang) {
     load_lang(lang, callback);
   } else {
-    $.ajax({ 
-        url: "https://ajaxhttpheaders.appspot.com", 
-        dataType: 'jsonp', 
+    $.ajax({
+        url: "https://ajaxhttpheaders.appspot.com",
+        dataType: 'jsonp',
         success: function(headers) {
             let language = headers['Accept-Language'];
             // en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7
