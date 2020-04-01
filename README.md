@@ -1,14 +1,8 @@
-# 2019-nCov
-Use Google Maps Timeline data to check whether you had contacted the patient or not.  
+# COVID-19 Timeline Download Tool
+Download Google Maps Timeline data and donate it to help reasearch on COVID19.  
 
-Check it now! [https://pandemic.events](https://pandemic.events)
-
-# The Web Interface
-
-With a pre-loaded patient historical track data, user can drag/drop in their tracks to compare.
-
-Note that all comparisons are happening in the local. Nothing is uploaded to server. This can
-ensure the user's privacy is protected.
+This webpage will guide you through the process of downloading your Google Maps Timeline and send them to our research group. 
+Anonymization will be applied on the stored timeline and you will be enable to widraw your consent and request the ask for your data to be deleted at any time.
 
 # NodeJs for Spacetime hash
 
@@ -63,11 +57,9 @@ If you see any error, please fix them before you upload.
   $ git push origin master:master  # replace the first 'master' with your local branch name
 ```
 
-See preview [here](http://raw.githack.com/yjlou/2019-nCov/master/index.html).
 New change may take few minutes to be propagated on the server side.
 
-Note that the preview is only for developer and could be broken anytime. If you are not developer,
-please use the [production page](https://pandemic.events) instead.
+Note that the preview is only for developer and could be broken anytime.
 
 ## Push to production
 
@@ -83,5 +75,3 @@ Ensure your local repo is clean to create a branch.
   $ git branch -D prod
 ```
 
-See production [here](https://pandemic.events). New change may take few minutes to be
-propagated on the server side.
